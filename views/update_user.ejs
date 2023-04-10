@@ -17,29 +17,48 @@
 
         <!-- add user form -->
          <!-- form handling -->
- <form method="POST" id="update_user">
-    <div class="new_user">
-        <div class="form-group">
-            <label for="name" class="text-light">Name</label>
-            <input type="hidden" name="id" value="<%= user._id %>">
-            <input type="text" name="name" value="<%= user.name %>" placeholder="name">
-        </div>
-        <div class="form-group">
-            <label for="Email" class="text-light">Luong</label>
-            <input type="number" name="luong" value="<%= user.luong%>" placeholder="Luong">
-        </div>
-        <div class="form-group">
-            <label for="diachi" class="text-light">Email</label>
-            <input type="text" name="diachi" value="<%= user.diachi%>" placeholder="dia chi">
-        </div>
-        <div class="form-group">
-            <button type="submit" class="btn text-dark update">Save</button>
-        </div>
 
+
+<div class="container">
+    <div class="row">
+       <div class="col-lg-6 mx-auto mt-4">
+        <div class="card shadow">
+            <div class="card-header bd-success">
+                <h3 >Edit User (<%= user.name %>)</h3>
+            </div>
+            <div class="card-body p-4">
+                <form method="POST" id="update_user" enctype="multipart/form-data">
+                    <input type="hidden" name="id" value="<%= user._id %>">
+                    <div class="mb-3">
+                        <label for="name">Name</label>
+                        <input type="text" name="name" class="form-control form-control-lg"
+                        placeholder="Enter name" value="<%= user.name %>" required/>
+                    </div>
+                    <div class="mb-3">
+                        <label for="username">UserName</label>
+                        <input type="text" name="username" class="form-control form-control-lg"
+                        placeholder="Enter username" value="<%= user.username %>" required/>
+                    </div>
+                    <div class="mb-3">
+                        <label for="pwd">Password</label>
+                        <input type="password" name="password" class="form-control form-control-lg"
+                        placeholder="Enter password" value="<%= user.password %>" required/>
+                    </div>
+                    <div class="mb-3">
+                        <label for="image" class="form-label">Select Image</label>
+                        <input type="file" name="image" class="form-control form-control-lg" required />  
+                        <img src="<%= user.image %>" width="50" class="img-thumbnail mt-1">
+                    </div>
+                    <div class="mb-3 d-grid">
+                       <button type="submit" class="btn btn-success btn-lg" >Save</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+       </div>
     </div>
-</form>
-    </div>
-</main>
+</div>
 <!-- /Main Site -->
 
 <!-- include footer -->

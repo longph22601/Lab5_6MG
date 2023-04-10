@@ -1,8 +1,6 @@
-var Userdb = require('../model/model');
+const { date } = require('joi');
+var Prodb = require('../model/product');
 const multer = require('multer');
-const jwt = require('jsonwebtoken');
-
-
 var Storage = multer.diskStorage({
     destination: "uploads",
     filename : (req, file, cb)=>{
@@ -26,18 +24,21 @@ exports.create = (req,res)=>{
         if(err){
             console.log(err);
         }else{
-            const user = new Userdb({
-                name : req.body.name,
-                username : req.body.username,
-                password: req.body.password,
-                image: req.file.filename
+            const pro = new Prodb({
+                masp : req.body.masp,
+                tensp : req.body.tensp,
+                dongia: req.body.dongia,
+                image: req.file.filename,
+                mausac: req.body.mausac,
+                makh: req.body.makh,
+                tenkh: req.body.tenkh,
                
             })
             
-            user
-        .save(user)
+            pro
+        .save(pro)
         .then(data => {
-            res.redirect('/add-user');
+            res.redirect('/add-product');
         })
         .catch(err =>{
             res.status(500).send({
@@ -56,7 +57,7 @@ exports.find = (req, res)=>{
     if(req.query.id){
         const id = req.query.id;
 
-        Userdb.findById(id)
+        Prodb.findById(id)
             .then(data =>{
                 if(!data){
                     res.status(404).send({ message : "Not found user with id "+ id})
@@ -69,9 +70,9 @@ exports.find = (req, res)=>{
             })
 
     }else{
-        Userdb.find()
-            .then(user => {
-                res.send(user)
+        Prodb.find()
+            .then(date => {
+                res.send(date)
             })
             .catch(err => {
                 res.status(500).send({ message : err.message || "Error Occurred while retriving user information" })
@@ -89,7 +90,7 @@ exports.update = (req, res)=>{
     }
 
     const id = req.params.id;
-    Userdb.findByIdAndUpdate(id, req.body, { useFindAndModify: false})
+    Prodb.findByIdAndUpdate(id, req.body, { useFindAndModify: false})
         .then(data => {
             if(!data){
                 res.status(404).send({ message : `Cannot Update user with ${id}. Maybe user not found!`})
@@ -105,7 +106,7 @@ exports.update = (req, res)=>{
 exports.delete = (req, res)=>{
     const id = req.params.id;
 
-    Userdb.findByIdAndDelete(id)
+    Prodb.findByIdAndDelete(id)
         .then(data => {
             if(!data){
                 res.status(404).send({ message : `Cannot Delete with id ${id}. Maybe id is wrong`})
@@ -121,68 +122,3 @@ exports.delete = (req, res)=>{
             });
         });
 }
-// exports.signin=(req,res,next)=>{
-//     var username = req.body.username;
-//     var password = req.body.password;
-
-//      Userdb.findOne({
-//         username : req.body.username,
-//         password : req.body.password
-//      })
-//      .then(data=>{
-//         if(data){
-//            var token = jwt.sign({_id: data._id},'mk')
-//             return res.json({
-//                 message:'thanh cong',
-//                 token : token
-//             })
-//         }else{
-//             return res.json("that bai")
-//         }
-//     })
-//     .catch(err=>{
-//         res.status(500).json("loi sv")
-//     });
-
-// }
-// exports.signup= (req,res,next)=>{
-//     console.log('Call to sign up')
-//     const founduser = Userdb.findOne({username})
-//     console.log(founduser)
-//     if(founduser) return res.status(403).json({error:{message:'Username is already is use'}})
-
-//     if(!req.body){
-//       res.status(400).send({ message : "Content can not be emtpy!"});
-//       return;
-//   }
-//   upload(req,res,(err)=>{
-//       if(err){
-//           console.log(err);
-//       }else{
-//           const user = new Userdb({
-//               name : req.body.name,
-//               username : req.body.username,
-//               password: req.body.password,
-//               image: req.file.filename
-             
-//           })    
-//           user
-//       .save(user)
-//       .then(data => {
-//           res.redirect('/add-user');
-//           const token = endcodeToken(user._id);
-//           return res.status(201).json({success:true, token})
-          
-
-//       })
-//       .catch(err =>{
-//           res.status(500).send({
-//               message : err.message || "Some error occurred while creating a create operation"
-//           });
-//       });
-      
-//       }
-//   });
- 
-// }
-

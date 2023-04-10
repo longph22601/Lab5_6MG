@@ -1,0 +1,81 @@
+
+<!-- include header -->
+<%- include('include/_header') %>
+<!-- /include header -->
+
+  <!-- Main Site -->
+  <main id="site-main">
+    <div class="container">
+        <div class="box-nav d-flex justify-between">
+           <div class="filter">
+               <a href="/all-product"><i class="fas fa-angle-double-left"></i> All Product</a>
+           </div>
+        </div>
+        <div class="form-title text-center">
+            <h2 class="text-dark">Update Products</h2>
+        </div>
+
+        <!-- add user form -->
+         <!-- form handling -->
+
+<div class="container">
+    <div class="row">
+       <div class="col-lg-6 mx-auto mt-4">
+        <div class="card shadow">
+            <div class="card-header bd-success">
+            
+                <h3 >Edit Products (<%= pro.tensp %>)</h3>
+            </div>
+            <div class="card-body p-4">
+                <form method="POST" id="update_product" enctype="multipart/form-data">
+                    <input type="hidden" name="id" value="<%= pro._id %>">
+                    <div class="mb-3">
+                        <label for="name">Tên sản phẩm</label>
+                        <input type="text" name="tensp" class="form-control form-control-lg"
+                         value="<%= pro.tensp %>" required/>
+                    </div>
+                    <div class="mb-3">
+                        <label for="username">Mã sản phẩm</label>
+                        <input type="text" name="masp" class="form-control form-control-lg"
+                         value="<%= pro.masp %>" required/>
+                    </div>
+                    <div class="mb-3">
+                        <label for="dongia">Đơn giá</label>
+                        <input type="text" name="dongia" class="form-control form-control-lg"
+                         value="<%= pro.dongia %>" required/>
+                    </div>
+                    <div class="mb-3">
+                        <label for="mausac">Màu sắc</label>
+                        <input type="text" name="mausac" class="form-control form-control-lg"
+                         value="<%= pro.mausac %>" required/>
+                    </div>
+                    <div class="mb-3">
+                        <label for="tenkh">Tên Khách Hàng</label>
+                        <input type="text" name="tenkh" class="form-control form-control-lg"
+                         value="<%= pro.tenkh %>" required/>
+                    </div>
+                    <div class="mb-3">
+                        <label for="makh">Mã Khách Hàng</label>
+                        <input type="text" name="makh" class="form-control form-control-lg"
+                         value="<%= pro.makh %>" required/>
+                    </div>
+                    <div class="mb-3">
+                        <label for="image" class="form-label">Select Image</label>
+                        <input type="file" name="image" class="form-control form-control-lg" required />  
+                        <img src="<%= pro.image %>" width="50" class="img-thumbnail mt-1">
+                    </div>
+                    <div class="mb-3 d-grid">
+                        <input type="submit"  value="Update User" class="btn btn-success btn-lg"/>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+       </div>
+    </div>
+</div>
+<!-- /Main Site -->
+
+<!-- include footer -->
+<%- include('include/_footer') %>
+<!-- /include footer -->

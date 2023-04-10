@@ -1,24 +1,25 @@
  <!-- form handling -->
- <form action="/api/users" method="POST" id="add_user">
-    <div class="new_user">
-        <div class="form-group">
-            <label for="name" class="text-light">Name</label>
-            <input type="hidden" name="id" value="">
-            <input type="text" name="name" value="" placeholder="ten nv">
+ <form action="/api/users" method="POST" id="add_user" enctype="multipart/form-data">
+        <div class="mb-3">
+            <label for="name">Name</label>
+            <input type="text" name="name" class="form-control form-control-lg"
+            placeholder="Enter name"  required/>
         </div>
-        <div class="form-group">
-            <label for="Luong" class="text-light">Luong</label>
-            <input type="number" name="luong" value="" placeholder="Luong">
+        <div class="mb-3">
+            <label for="username">UserName</label>
+            <input type="text" name="username" class="form-control form-control-lg"
+            placeholder="Enter username"  required/>
         </div>
-        <div class="form-group">
-            <label for="Dc" class="text-light">Location</label>
-            <input type="text" name="diachi" value="" placeholder="Dia chi">
-              
-          
-
-        <div class="form-group">
-            <button type="submit" class="btn text-dark update">Save</button>
+        <div class="mb-3">
+            <label for="pwd">Password</label>
+            <input type="password" name="password" class="form-control form-control-lg"
+            placeholder="Enter password" required/>
         </div>
-
-    </div>
+        <div class="mb-3">
+            <label for="image" class="form-label">Select Image</label>
+            <input type="file" name="image" class="form-control form-control-lg" required />  
+        </div>
+        <div class="mb-3 d-grid">
+            <input type="submit" name="submit" value="Add User" class="btn btn-success btn-lg"/>
+        </div>
 </form>

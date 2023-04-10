@@ -1,18 +1,28 @@
 const mongoose = require('mongoose');
 
 var schema = new mongoose.Schema({
-    name : {
-        type : String,
-        required: true
+    username:{
+        type:String,
+        required:true,
+        unique : true
     },
-    luong : {
-        type: String,
-        required: true
+    password:{
+        type:String,
+        required:true
     },
-    diachi : {
-        type: String,
-        required: true
+    name:{
+        type:String,
+        required:true
     },
+    image:{
+        type:String,
+        required:true
+    },
+    admin:{
+      type:Boolean,
+      default:false,
+    },
+
     
 })
 
