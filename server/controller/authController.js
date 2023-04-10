@@ -89,18 +89,11 @@ gennerateRefreshToken:(users)=>{
                     id: users.id,
                     admin: users.admin
                    },'mk');
-                   //{expiresIn: "2h"}
                    res.cookie('auth-token',token,{maxAge: 36000, httpOnly:true});
-                   res.redirect('/add-user')
-                // const accessToken=  authController.gennerateAccessToken(users);
-                // const refreshToken=  authController.gennerateRefeshToken(users);
+                   res.redirect('/')
                 res.status(200).json({users,token});
 
-                // res.cookie("refreshToken",refreshToken,{
-                //     httpOnly:true,
-                //     secure:false,
-                //     sameSite:"strict",
-                // })
+           
 
                
             }
@@ -125,44 +118,17 @@ gennerateRefreshToken:(users)=>{
                     admin: users.admin
                    },'mk',{expiresIn: "3d"});
                    //
-                res.header('auth-token',token).send(token);
-             
-                // const accessToken=  authController.gennerateAccessToken(users);
-                // const refreshToken=  authController.gennerateRefeshToken(users);
+                res.header('auth-token',token).send(token)
                 res.status(200).json({users,token});
 
-                // res.cookie("refreshToken",refreshToken,{
-                //     httpOnly:true,
-                //     secure:false,
-                //     sameSite:"strict",
-                // })
-
+            
                
             }
         } catch (err) {
             res.status(500).json(err)
         }
     },
-    // requestRefreshToken: async(req,res)=>{
-    //     const refreshToken =req.cookies.refreshToken;
-    //     if(!refreshToken){
-    //         return(res.status(401).json("you not authenticated"))
-    //     }
 
-    //     jwt.verify(refreshToken,'rfmk',(err,users)=>{
-    //         if(err){
-    //             console.log(err);
-    //         }
-    //         const newAccessToken = authController.gennerateAccessToken(users);
-    //         const newRefreshToken = authController.gennerateRefreshToken(users);
-    //         res.cookie("refreshToken",newRefreshToken,{
-    //             httpOnly:true,
-    //             secure:false,
-    //             sameSite:"strict",
-    //         });
-    //         res.status(200).json({accessToken: newAccessToken});
-    //     })
-    // },
     
     
     userLogout: async(req,res)=>{
