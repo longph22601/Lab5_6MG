@@ -64,5 +64,4 @@ route.delete('/api/product/:id', controllerPro.delete);
 ////////////////////////////////////////////////////////////////////////
 // route.post('/api/signin',controller.signin);
 
-
 module.exports = route

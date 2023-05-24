@@ -1,13 +1,14 @@
 <% for(var i = 0; i < pros.length; i++) { %>
 <tr>
     <td><%= i + 1 %></td>
-    <td><img src="<%= pros[i].image %>" width="50"></td>
+    <td><img src="<%= pros[i].image %>" width="50" height="50"></td>
     <td><%= pros[i].tensp %></td>
     <td><%= pros[i].masp %></td>
     <td><%= pros[i].dongia %></td>
     <td><%= pros[i].mausac %></td>
-    <td><%= pros[i].tenkh %></td>
-    <td><%= pros[i].makh %></td>
+    <td><%= pros[i].soluong %></td>
+    <td><%= pros[i].trangthai %></td>
+    <td><%= pros[i].mota %></td>
     <td>
         <a href="/update-product?id=<%= pros[i]._id%>" class="btn border-shadow update">
             <span class="text-gradient"><i class="fas fa-pencil-alt"></i></span>

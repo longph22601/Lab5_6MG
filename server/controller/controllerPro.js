@@ -30,9 +30,9 @@ exports.create = (req,res)=>{
                 dongia: req.body.dongia,
                 image: req.file.filename,
                 mausac: req.body.mausac,
-                makh: req.body.makh,
-                tenkh: req.body.tenkh,
-               
+                soluong: req.body.soluong,
+                trangthai: req.body.trangthai,
+                mota: req.body.mota,
             })
             
             pro
